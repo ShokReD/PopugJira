@@ -29,6 +29,7 @@ subprojects {
     dependencies {
         implementation("org.springframework.boot:spring-boot-starter-data-jpa")
         implementation("org.springframework.boot:spring-boot-starter-webflux")
+        implementation("org.liquibase:liquibase-core")
         // only for h2-console
         implementation("org.springframework.boot:spring-boot-starter-web")
         compileOnly("org.projectlombok:lombok")

@@ -1,0 +1,15 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet author="ShokReD" id="1.0-1">
+        <createTable tableName="TASKS">
+            <column name="TASK_ID" type="NUMBER" autoIncrement="true" remarks="Unique identifier of task in system"/>
+            <column name="DESCRIPTION" type="VARCHAR(200)" remarks="Main info about task"/>
+            <column name="STATUS" type="VARCHAR(20)" remarks="Current status of task"/>
+            <column name="CHANGE_DATE" type="DATE" remarks="Date of last status change"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
