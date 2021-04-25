@@ -12,4 +12,14 @@ subprojects {
     apply {
         plugin("org.jetbrains.kotlin.jvm")
     }
+
+    nonCircularDependency("event")
+}
+
+fun Project.nonCircularDependency(projectName: String) {
+    if (this.name != projectName) {
+        dependencies {
+            implementation(project(":${projectName}"))
+        }
+    }
 }
