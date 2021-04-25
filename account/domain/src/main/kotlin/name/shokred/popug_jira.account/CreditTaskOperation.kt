@@ -8,7 +8,7 @@ import java.time.OffsetDateTime
 class CreditTaskOperation(
     override val id: Long,
     override val cost: Money,
-    override val owner: User,
+    override val account: Account,
     override val subject: Task
 ) : Operation {
 
