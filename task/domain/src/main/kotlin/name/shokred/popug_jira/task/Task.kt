@@ -1,13 +1,12 @@
 package name.shokred.popug_jira.task
 
 class Task(
-        val id: Long,
-        var title: String,
-        var description: String,
-        var assignee: User,
-        val cost: Money
+    val id: Long,
+    var title: String,
+    var description: String
 ) {
     private var status: TaskStatus = TaskStatus.NOT_COMPLETED
+    var assignee: User? = null
 
     fun complete() {
         this.status = TaskStatus.COMPLETED
