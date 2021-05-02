@@ -10,3 +10,4 @@ include("task:persistence")
 
 include("account:domain")
 include("account:use-case")
+include("account:persistence")
