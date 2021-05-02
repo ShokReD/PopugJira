@@ -14,6 +14,7 @@ subprojects {
     }
 
     nonCircularDependency("event")
+    nonCircularDependency("common")
 }
 
 fun Project.nonCircularDependency(projectName: String) {
