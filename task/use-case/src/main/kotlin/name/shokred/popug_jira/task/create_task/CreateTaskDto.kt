@@ -1,3 +1,5 @@
 package name.shokred.popug_jira.task.create_task
 
-data class CreateTaskDto(val title: String, val description: String)
+import name.shokred.popug_jira.UseCaseDto
+
+data class CreateTaskDto(val title: String, val description: String) : UseCaseDto

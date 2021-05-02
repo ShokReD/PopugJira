@@ -1,5 +1,7 @@
 package name.shokred.popug_jira.account.transfer_debts
 
+import name.shokred.popug_jira.EmptyUseCaseDto
+import name.shokred.popug_jira.UseCase
 import name.shokred.popug_jira.account.DebitTaskOperation
 import name.shokred.popug_jira.account.Operation
 import name.shokred.popug_jira.account.port.LoadOperationPort
@@ -10,9 +12,9 @@ class TransferDebtsUseCase(
     private val loadOperationPort: LoadOperationPort,
     private val saveOperationPort: SaveOperationPort,
     private val eventPublisher: EventPublisher
-) {
+) : UseCase<EmptyUseCaseDto> {
 
-    fun invoke() {
+    override fun invoke(dto: EmptyUseCaseDto) {
         loadOperationPort.findTodayOperation()
             .filterIsInstance<DebitTaskOperation>()
             .onEach(DebitTaskOperation::postponeForTomorrow)

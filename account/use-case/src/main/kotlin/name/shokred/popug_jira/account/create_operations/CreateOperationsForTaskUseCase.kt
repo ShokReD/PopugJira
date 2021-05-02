@@ -1,5 +1,6 @@
 package name.shokred.popug_jira.account.create_operations
 
+import name.shokred.popug_jira.UseCase
 import name.shokred.popug_jira.account.CreditTaskOperation
 import name.shokred.popug_jira.account.DebitTaskOperation
 import name.shokred.popug_jira.account.Money
@@ -15,13 +16,13 @@ class CreateOperationsForTaskUseCase(
     private val loadAccountPort: LoadAccountPort,
     private val saveAccountPort: SaveAccountPort,
     private val eventPublisher: EventPublisher
-) {
+) : UseCase<CreateOperationsForTaskDto> {
 
-    fun invoke(createOperationsForTaskDto: CreateOperationsForTaskDto) {
-        val task = Task(createOperationsForTaskDto.taskId)
+    override fun invoke(dto: CreateOperationsForTaskDto) {
+        val task = Task(dto.taskId)
 
-        val account = (loadAccountPort.findByUserId(createOperationsForTaskDto.userId)
-            ?: throw IllegalArgumentException("Account for user [${createOperationsForTaskDto.userId}] not found"))
+        val account = (loadAccountPort.findByUserId(dto.userId)
+            ?: throw IllegalArgumentException("Account for user [${dto.userId}] not found"))
 
         val debitTaskOperation = DebitTaskOperation(
             id = operationIdGenerator.generate(),

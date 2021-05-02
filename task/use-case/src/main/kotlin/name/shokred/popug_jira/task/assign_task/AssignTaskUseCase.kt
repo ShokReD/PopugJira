@@ -1,5 +1,6 @@
 package name.shokred.popug_jira.task.assign_task
 
+import name.shokred.popug_jira.UseCase
 import name.shokred.popug_jira.event.EventPublisher
 import name.shokred.popug_jira.task.port.LoadTaskPort
 import name.shokred.popug_jira.task.port.LoadUserPort
@@ -10,13 +11,13 @@ class AssignTaskUseCase(
     private val loadUserPort: LoadUserPort,
     private val updateTaskPort: UpdateTaskPort,
     private val eventPublisher: EventPublisher
-) {
+) : UseCase<AssignTaskDto> {
 
-    fun invoke(assignTaskDto: AssignTaskDto) {
-        val task = loadTaskPort.findById(assignTaskDto.taskId)
-            ?: throw IllegalArgumentException("Task [${assignTaskDto.taskId}] not found")
-        val user = loadUserPort.findById(assignTaskDto.userId)
-            ?: throw IllegalArgumentException("User [${assignTaskDto.userId}] not found")
+    override fun invoke(dto: AssignTaskDto) {
+        val task = loadTaskPort.findById(dto.taskId)
+            ?: throw IllegalArgumentException("Task [${dto.taskId}] not found")
+        val user = loadUserPort.findById(dto.userId)
+            ?: throw IllegalArgumentException("User [${dto.userId}] not found")
 
         task.assignee = user
         updateTaskPort.update(task)
