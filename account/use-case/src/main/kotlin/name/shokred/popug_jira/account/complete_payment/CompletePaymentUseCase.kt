@@ -11,7 +11,7 @@ class CompletePaymentUseCase(
     private val loadOperationPort: LoadOperationPort,
     private val saveOperationPort: SaveOperationPort,
     private val eventPublisher: EventPublisher
-) : UseCase<CompletePaymentDto> {
+) : UseCase<CompletePaymentDto, Unit> {
 
     override fun invoke(dto: CompletePaymentDto) {
         val operations = loadOperationPort.findByTaskId(dto.taskId)

@@ -9,7 +9,7 @@ class CompleteTaskUseCase(
     private val loadTaskPort: LoadTaskPort,
     private val updateTaskPort: UpdateTaskPort,
     private val eventPublisher: EventPublisher
-) : UseCase<CompleteTaskDto> {
+) : UseCase<CompleteTaskDto, Unit> {
 
     override fun invoke(dto: CompleteTaskDto) {
         val task = (loadTaskPort.findById(dto.taskId)

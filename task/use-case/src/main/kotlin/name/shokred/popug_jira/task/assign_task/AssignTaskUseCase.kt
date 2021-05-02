@@ -11,7 +11,7 @@ class AssignTaskUseCase(
     private val loadUserPort: LoadUserPort,
     private val updateTaskPort: UpdateTaskPort,
     private val eventPublisher: EventPublisher
-) : UseCase<AssignTaskDto> {
+) : UseCase<AssignTaskDto, Unit> {
 
     override fun invoke(dto: AssignTaskDto) {
         val task = loadTaskPort.findById(dto.taskId)

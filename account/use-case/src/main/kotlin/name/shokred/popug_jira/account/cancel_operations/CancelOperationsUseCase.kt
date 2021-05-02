@@ -11,7 +11,7 @@ class CancelOperationsUseCase(
     private val loadOperationPort: LoadOperationPort,
     private val saveOperationPort: SaveOperationPort,
     private val eventPublisher: EventPublisher
-) : UseCase<CancelOperationsDto> {
+) : UseCase<CancelOperationsDto, Unit> {
 
     override fun invoke(dto: CancelOperationsDto) {
         val operations = loadOperationPort.findByTaskId(dto.taskId)

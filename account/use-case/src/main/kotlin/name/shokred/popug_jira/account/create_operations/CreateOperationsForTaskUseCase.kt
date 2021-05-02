@@ -16,7 +16,7 @@ class CreateOperationsForTaskUseCase(
     private val loadAccountPort: LoadAccountPort,
     private val saveAccountPort: SaveAccountPort,
     private val eventPublisher: EventPublisher
-) : UseCase<CreateOperationsForTaskDto> {
+) : UseCase<CreateOperationsForTaskDto, Unit> {
 
     override fun invoke(dto: CreateOperationsForTaskDto) {
         val task = Task(dto.taskId)

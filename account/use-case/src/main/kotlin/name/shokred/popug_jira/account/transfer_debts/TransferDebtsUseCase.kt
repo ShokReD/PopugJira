@@ -12,7 +12,7 @@ class TransferDebtsUseCase(
     private val loadOperationPort: LoadOperationPort,
     private val saveOperationPort: SaveOperationPort,
     private val eventPublisher: EventPublisher
-) : UseCase<EmptyUseCaseDto> {
+) : UseCase<EmptyUseCaseDto, Unit> {
 
     override fun invoke(dto: EmptyUseCaseDto) {
         loadOperationPort.findTodayOperation()

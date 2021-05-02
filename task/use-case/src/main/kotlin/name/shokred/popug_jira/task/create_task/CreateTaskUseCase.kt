@@ -11,7 +11,7 @@ class CreateTaskUseCase(
     private val createTaskPort: CreateTaskPort,
     private val taskIdGenerator: TaskIdGenerator,
     private val eventPublisher: EventPublisher
-) : UseCase<CreateTaskDto> {
+) : UseCase<CreateTaskDto, Unit> {
 
     private val random = Random()
 

@@ -14,7 +14,7 @@ class CloseOperationDayUseCase(
     private val loadOperationPort: LoadOperationPort,
     private val transferDebtsUseCase: TransferDebtsUseCase,
     private val eventPublisher: EventPublisher
-) : UseCase<EmptyUseCaseDto> {
+) : UseCase<EmptyUseCaseDto, Unit> {
 
     override fun invoke(dto: EmptyUseCaseDto) {
         transferDebtsUseCase.invoke(EmptyUseCaseDto())
