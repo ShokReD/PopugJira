@@ -2,6 +2,8 @@ plugins {
     kotlin("jvm").version("1.4.32")
 }
 
+ext["spring-version"] = "2.4.3"
+
 allprojects {
     repositories {
         mavenCentral()
