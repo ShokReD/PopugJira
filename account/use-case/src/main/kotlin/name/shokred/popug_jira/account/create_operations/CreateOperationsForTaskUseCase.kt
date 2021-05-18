@@ -27,14 +27,12 @@ class CreateOperationsForTaskUseCase(
         val debitTaskOperation = DebitTaskOperation(
             id = operationIdGenerator.generate(),
             cost = randomMoney(10, 20),
-            account = account,
             subject = task
         )
 
         val creditTaskOperation = CreditTaskOperation(
             id = operationIdGenerator.generate(),
             cost = randomMoney(20, 40),
-            account = account,
             subject = task
         )
 

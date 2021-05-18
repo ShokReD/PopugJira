@@ -8,8 +8,7 @@ import java.time.OffsetDateTime
 class DebitTaskOperation(
     override val id: Long,
     override val cost: Money,
-    override val account: Account,
-    override val subject: Task
+    override val subject: OperationSubject
 ) : Operation {
 
     override val type: String = "debit"

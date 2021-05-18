@@ -20,7 +20,6 @@ class CloseOperationDayUseCase(
         transferDebtsUseCase.invoke(EmptyUseCaseDto())
 
         loadOperationPort.findTodayOperation()
-            .groupBy(Operation::account)
             .map(this::createEvent)
             .forEach(eventPublisher::publish)
     }
