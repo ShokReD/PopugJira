@@ -1,8 +1,6 @@
 plugins {
-    kotlin("jvm").version("1.4.32")
+    kotlin("jvm")
 }
-
-ext["spring-version"] = "2.4.3"
 
 allprojects {
     repositories {
@@ -17,6 +15,10 @@ subprojects {
 
     nonCircularDependency("event")
     nonCircularDependency("common")
+
+    tasks.withType(Test::class) {
+        useJUnitPlatform()
+    }
 }
 
 fun Project.nonCircularDependency(projectName: String) {
