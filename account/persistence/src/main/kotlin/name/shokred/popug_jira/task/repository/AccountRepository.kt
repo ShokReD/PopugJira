@@ -14,10 +14,14 @@ interface AccountRepository : CrudRepository<AccountEntity, Long> {
           FROM AccountEntity a 
          WHERE EXISTS (SELECT 1 
                          FROM OperationEntity o
-                        WHERE o.operationDate > :operationDate)
+                        WHERE o.operationDate >= :startDate
+                          AND o.operationDate < :endDate)
          """
     )
-    fun findAllWithTodayOperations(@Param("operationDate") operationDate: OffsetDateTime): List<AccountEntity>
+    fun findAllOperationsWithOperationDateBetween(
+        @Param("startDate") startDate: OffsetDateTime,
+        @Param("endDate") endDate: OffsetDateTime
+    ): List<AccountEntity>
 
     fun findOneByUserId(userId: Long): AccountEntity?
 }
