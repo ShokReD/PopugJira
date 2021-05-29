@@ -8,9 +8,8 @@ plugins {
 dependencies {
     implementation(project(":account:domain"))
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-    testImplementation("org.springframework.boot:spring-boot-starter-test") {
-        exclude(group = "junit", module = "junit")
-    }
+    implementation("org.jetbrains.kotlin:kotlin-reflect:${properties["kotlin-jvm.plugin.version"]}")
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("com.h2database:h2")
 }
 
